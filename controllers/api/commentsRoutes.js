@@ -1,8 +1,6 @@
 const router = require('express').Router();
-const { compare } = require('bcrypt');
 const { Comment } = require('../../models')
 const withAuth = require('../../utils/auth');
-const session = require('express-session');
 
 router.get('/', (req, res) => {
     Comment.findAll()
