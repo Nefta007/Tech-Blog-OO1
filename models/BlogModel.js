@@ -1,5 +1,5 @@
 const {Model, DataTypes} = require('sequilze');
-const sequilze = require('../config/connection')
+const sequilize = require('../config/connection')
 class Blog extends Model{ }
 Blog.init({
     id: {
@@ -30,10 +30,10 @@ Blog.init({
       },
     },
     {
-      sequelize,
+      sequilize,
       freezeTableName: true,
       underscored: true,
-      modelName: 'gallery',
+      modelName: 'blogPost',
     }
   );
   
