@@ -8,8 +8,8 @@ const dashboardHandler = async (event) =>{
     const postDescription = document.querySelector('#post-description').value.trim();
 
     if(postTitle && postDescription){
-        const response = await fetch('/api/blogRoutes',{
-            method: 'POST',
+        const response = await fetch('/api/blogs',{
+            method: 'post',
             body:JSON.stringify({ postTitle, postDescription }),
             headers: { 'Content-Type': 'application/json' },
         });
@@ -40,4 +40,6 @@ const deleteHandler = async (event) =>{
 
 elpostList.addEventListener('click', deleteHandler);
 
-elblogForm.addEventListener('submit', dashboardHandler);
+if(elblogForm){
+    elblogForm.addEventListener('submit', dashboardHandler);
+}

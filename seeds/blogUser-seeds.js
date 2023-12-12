@@ -4,12 +4,12 @@ const blogUserData = [
     {
         username: "JohnDoh",
         email: "JohnDoh@gmail.com",
-        password: "1234567890",
+        password: "pass1234",
     },
     {
         username: "JaneDoh",
         email: "JaneDou@gmail.com",
-        password: "0987654321",
+        password: "pass5678",
     },
 ];
 
