@@ -4,12 +4,12 @@ const withAuth = require('../../utils/auth');
 
 router.post('/', async (req, res) => {
     try {
-      const newPost = await Post.create({
+      const newPost = await Blog.create({
         ...req.body,
         user_id: req.session.user_id,
       });
   
-      res.status(200).json(newProject);
+      res.status(200).json(newPost);
     } catch (err) {
       res.status(400).json(err);
     }
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 
   router.delete('/:id', withAuth, async (req, res) => {
     try {
-      const bolgData = await Blog.destroy({
+      const blogData = await Blog.destroy({
         where: {
           id: req.params.id,
           user_id: req.session.user_id,

@@ -12,6 +12,7 @@ router.post('/', async (req, res) => {
       res.status(200).json(userData);
     });
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
@@ -45,6 +46,17 @@ router.post('/login', async (req, res) => {
 
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+
+router.post('/logout', (req, res) => {
+  // When the user logs out, the session is destroyed
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
   }
 });
 

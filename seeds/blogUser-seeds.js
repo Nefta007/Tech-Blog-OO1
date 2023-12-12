@@ -13,5 +13,5 @@ const blogUserData = [
     },
 ];
 
-const seedUser =() => blogPost.bulkCreate(blogUserData);
+const seedUser =() => blogUser.bulkCreate(blogUserData);
 module.exports = seedUser;
