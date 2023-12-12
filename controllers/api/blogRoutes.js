@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
 
   router.post('/:id/comment', async(req, res)=>{
     try{
-        res.status(200).json(``);
+        res.status(200).json({});
     }catch(err){
         res.status(400).json(err);
     }
