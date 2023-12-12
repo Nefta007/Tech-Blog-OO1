@@ -1,4 +1,4 @@
-const { blogUser } = require("../models");
+const { User } = require("../models");
 
 const blogUserData = [
     {
@@ -13,5 +13,5 @@ const blogUserData = [
     },
 ];
 
-const seedUser =() => blogUser.bulkCreate(blogUserData);
+const seedUser =() => User.bulkCreate(blogUserData);
 module.exports = seedUser;
