@@ -1,32 +1,39 @@
 const elblogForm = document.querySelector('.new-post-form');
 const elpostList = document.querySelector('.post-list');
 
-const dashboardHandler = async (event) =>{
+const dashboardHandler = async (event) => {
+
     event.preventDefault();
 
-    const postTitle = document.querySelector('#blog-title').value.trim();
-    const postDescription = document.querySelector('#post-description').value.trim();
+    const Title = document.querySelector('#blog-title').value.trim();
+    const Description = document.querySelector('#post-description').value.trim();
 
-    if(postTitle && postDescription){
-        const response = await fetch('/api/blogs',{
-            method: 'post',
-            body:JSON.stringify({ postTitle, postDescription }),
-            headers: { 'Content-Type': 'application/json' },
+    if (Title && Description) {
+        const response = await fetch(`/api/blogs`, {
+            method: "POST",
+            body: JSON.stringify({
+                Title,
+                Description,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
         });
+
         if (response.ok) {
-            document.location.replace('/dashboard');
+            document.location.replace("/dashboard");
         } else {
-            alert('Failed blogging.');
+            alert(response.statusText);
         }
     }
 };
 
 
-const deleteHandler = async (event) =>{
+const deleteHandler = async (event) => {
     event.preventDefault();
 
-    if(event.target.hasAttribute('data-id')){
-        const response = await fetch(`/api/blogRoutes/${id}`,{
+    if (event.target.hasAttribute('data-id')) {
+        const response = await fetch(`/api/blogs/${id}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
         });
@@ -38,8 +45,9 @@ const deleteHandler = async (event) =>{
     }
 };
 
-elpostList.addEventListener('click', deleteHandler);
 
-if(elblogForm){
-    elblogForm.addEventListener('submit', dashboardHandler);
+elblogForm.addEventListener('submit', dashboardHandler);
+
+if (elpostList) {
+    elpostList.addEventListener('click', deleteHandler);
 }

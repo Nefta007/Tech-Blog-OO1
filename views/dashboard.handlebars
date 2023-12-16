@@ -4,12 +4,12 @@
 
     <form class="form new-post-form">
       <div class="form-group">
-        <label for="blog-title"><Title></Title></label>
-        <input class="form-input" type="text" id="post-name" name="post-name" />
+        <label for="blog-title">Title</label>
+        <input class="form-input" type="text" id="blog-title" name="blog-title" />
       </div>
       <div class="form-group">
         <label for="post-description">Content</label>
-        <input class="form-input" type="number" id="post-description" name="post-description" />
+        <input class="form-input" type="text" id="post-description" name="post-description" />
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
@@ -18,21 +18,33 @@
   </div>
 
   {{#if blogposts.length}}
-  <div class="col-md-6 post-list">
-    <h3>Previous Post:</h3>
+  <section>
+    <div class="col-md-6 post-list">
+      <h3>My Previous Post:</h3>
+      {{#each blogposts as |blogpost|}}
+      <div class="row mb-2">
+        <div class="col-md-8">
+          <div class="blog-title" id="blog-title">
+            <h2>{{title}}</h2>
+          </div>
+          <div class="blog-date" id="blog-date">
+            <p>Posted on: {{format_date date_created}}</p>
+          </div>
+          <div class="blog-description" id="post-description">
+            <p>{{description}}</p>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-sm btn-danger" data-id="{{user_id}}">DELETE</button>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-sm btn-danger" data-id="{{user_id}}">UPDATE</button>
+          </div>
+        </div>
 
-    {{#each blogposts as |blogpost|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/blogpost/{{blogpost.id}}">{{project.name}}</a></h4>
       </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
-      </div>
+      {{/each}}
     </div>
-    {{/each}}
-  </div>
-  {{/if}}
+    {{/if}}
 </div>
-
+</section>
 <script src="/js/dashboard.js"></script>

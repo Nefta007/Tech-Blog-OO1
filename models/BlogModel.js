@@ -13,26 +13,26 @@ Blog.init({
     allowNull: false,
   },
   description: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  userName: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  userName:{
-  type: DataTypes.STRING,
-  allowNull: false,
-},
   user_id: {
-  type: DataTypes.INTEGER,
-  references: {
-    model: 'user',
-    key: 'id',
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'users',
+      key: 'id',
+    },
+  },
+  blog_date: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    defaultValue: DataTypes.NOW,
   },
 },
-  blog_date: {
-  type: DataTypes.DATE,
-  allowNull: false,
-  defaultValue: DataTypes.NOW,
-},
-    },
   {
     sequelize,
     timestamps: false,
